@@ -13,9 +13,11 @@ public:
     Graph(const std::string& filePath, const bool& oriented=false);
 
     void printAdjacencyMatrix() const;
+    void printAdjacencyList() const;
 
 private:
     std::vector<std::vector<int>> makeAdjacencyMatrix(const std::string& filePath, const bool& oriented=false) const;
+    std::vector<std::vector<int>> makeAdjacencyList(const std::string& filePath, const bool& oriented=false) const;
 };
 
 #endif
