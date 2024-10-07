@@ -72,3 +72,38 @@ std::vector<std::vector<int>> Graph::makeAdjacencyList(const std::string& filePa
 
     return adjacencyList;
 }
+
+std::vector<std::vector<int>> Graph::getAdjacencyMatrix() const{
+    return this->adjacencyMatrix;
+}
+
+std::vector<std::vector<int>> Graph::getAdjacencyList() const{
+    return this->adjacencyList;
+}
+
+std::vector<std::vector<int>> Graph::matrixToList(const std::vector<std::vector<int>>& matrix){
+    std::vector<std::vector<int>> adjacencyList(matrix.size());
+
+    for(int i=1; i < matrix.size(); i++){
+        for(int j=1; j< matrix.size(); j++){
+            if(matrix[i][j]){
+                adjacencyList[i].push_back(j);
+            }
+        }
+    }
+
+    return adjacencyList;
+}
+
+std::vector<std::vector<int>> Graph::listToMatrix(const std::vector<std::vector<int>> &list)
+{
+    std::vector<std::vector<int>> adjacencyMatrix(list.size(), std::vector<int>(list.size(), 0));
+
+    for(int i=1; i<list.size(); i++){
+        for(const auto& value : list[i]){
+            adjacencyMatrix[i][value] = 1;
+        }
+    }
+
+    return adjacencyMatrix;
+}
